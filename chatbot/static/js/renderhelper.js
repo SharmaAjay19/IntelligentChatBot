@@ -1,6 +1,6 @@
 function renderMessages(messageData){
 	var list = document.getElementById('conversationlist');
-	//list.innerHTML = "";
+	list.innerHTML = "";
 	for(var i=0; i<messageData["chatmessages"].length; i++){
 		var msg = messageData["chatmessages"][i];
 		var li = document.createElement('li');
@@ -11,17 +11,17 @@ function renderMessages(messageData){
 
 function clearChat(){
 	$.ajax({
-						url: "http://localhost:8000/clearchat/",
-						type: "get",
-						data: {
-							'csrfmiddlewaretoken': '{{ csrf_token }}',
-						},
-						dataType: 'json',
-						success: function(output) {
-							console.log(output);
-							document.innerHTML = output;
-						}
-					});
+			url: "http://localhost:8000/clearchat/",
+			type: "get",
+			data: {
+				'csrfmiddlewaretoken': '{{ csrf_token }}',
+			},
+			dataType: 'json',
+			success: function(output) {
+				console.log(output);
+				renderMessages(output);
+			}
+	});
 }
 
 function clearTextArea(){
