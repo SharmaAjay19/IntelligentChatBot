@@ -1,0 +1,18 @@
+div.chatwindow {
+	outline: #00FF00 solid thin;
+	background: yellow;
+	width: 300px;
+}
+
+div.chattypebox {
+	outline: #0000FF solid thin;
+	background: white;
+}
+
+textarea.chatinput {
+	width: 100%;
+}
+
+ul.conversation {
+	list-style-type: none;
+}
