@@ -9,6 +9,10 @@ function renderMessages(messageData){
 	}
 }
 
+setInterval(function(){
+   	refreshChat();
+}, 3000);
+
 function refreshChat(){
 	$.ajax({
 			url: "http://localhost:8000/refreshchat/",
