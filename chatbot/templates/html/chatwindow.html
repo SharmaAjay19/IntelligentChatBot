@@ -1,15 +1,41 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<script type="text/javascript" src="{% static 'js/renderhelper.js' %}"></script>
+<input type="text" name="userid" id="userid" value="UserId"/>
 <div id="chatWindowContainer" name="chatWindowContainer" class="chatwindow">
 	<div id="conversationcontainer" name="conversationcontainer">
-		<ul class="conversation">
+		<ul class="conversation" id="conversationlist">
 			{% for item in chatmessages %}
 			<li>{{ item.userid }}: {{ item.text }}</li>
 			{% endfor %}
 		</ul>
 	</div>
 	<div id="chattypebox" name="chattypebox" class="chattypebox">
-		<textarea rows="4" name="chatinput" id="chatinput" class="chatinput">
+		<script type="text/javascript">
+			function onKeyPress(e) {
+				if( (window.event ? event.keyCode : e.which) == 13) {
+					$.ajax({
+						url: "http://localhost:8000/sendmessage/",
+						type: "post",
+						data: {
+							'userid':$('#userid').val(),
+							'text': $('#chatinput').val(),
+							'csrfmiddlewaretoken': '{{ csrf_token }}',
+						},
+						dataType: 'json',
+						success: function(output) {
+							renderMessages(output);
+							console.log(output);
+							clearTextArea();
+						}
+					});
+				}
+			}
+		</script>
+		<textarea rows="4" name="chatinput" onkeydown = "onKeyPress(event)" id="chatinput" class="chatinput">
 		</textarea>
+	</div>
+	<div id="clearbuttondiv" class="clearbuttondiv">
+		<button id="clearbutton" name="clearbutton" onclick="clearChat()">Clear</button>
 	</div>
 </div>

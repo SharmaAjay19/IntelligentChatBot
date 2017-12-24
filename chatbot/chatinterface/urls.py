@@ -18,5 +18,6 @@ from chatinterface import views
 
 urlpatterns = [
     url(r'^chat/', views.ChatPageView.as_view()),
-    url(r'^chat/sendmessage/', views.SendMessage.as_view()),
+    url(r'^clearchat/', views.ClearChatPageView.as_view()),
+    url(r'^sendmessage/', views.SendMessage.as_view()),
 ]
