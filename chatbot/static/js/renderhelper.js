@@ -9,6 +9,21 @@ function renderMessages(messageData){
 	}
 }
 
+function refreshChat(){
+	$.ajax({
+			url: "http://localhost:8000/refreshchat/",
+			type: "get",
+			data: {
+				'csrfmiddlewaretoken': '{{ csrf_token }}',
+			},
+			dataType: 'json',
+			success: function(output) {
+				console.log(output);
+				renderMessages(output);
+			}
+	});
+}
+
 function clearChat(){
 	$.ajax({
 			url: "http://localhost:8000/clearchat/",

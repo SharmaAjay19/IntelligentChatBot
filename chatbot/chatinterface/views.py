@@ -36,6 +36,10 @@ class ClearChatPageView(TemplateView):
 			conversation.chatmessages[i]["active"] = False
 		return HttpResponse(json.dumps(getMessages(10)), content_type="application/json")
 
+class RefreshChatPageView(TemplateView):
+	def get(self, request, **kwargs):
+		return HttpResponse(json.dumps(getMessages(10)), content_type="application/json")
+
 class SendMessage(TemplateView):
 	def get(self, request, **kwargs):
 		userid = request.get["userid"]

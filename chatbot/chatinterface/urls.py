@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^chat/', views.ChatPageView.as_view()),
     url(r'^clearchat/', views.ClearChatPageView.as_view()),
     url(r'^sendmessage/', views.SendMessage.as_view()),
+    url(r'^refreshchat/', views.RefreshChatPageView.as_view()),
 ]
