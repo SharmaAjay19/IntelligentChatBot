@@ -1,6 +1,6 @@
 function startConversation(userid){
 	$.ajax({
-			url: "http://localhost:8000/startconversation/",
+			url: "/startconversation/",
 			type: "get",
 			data: {
 				'csrfmiddlewaretoken': '{{ csrf_token }}',
@@ -39,7 +39,7 @@ setInterval(function(){
 
 function refreshPeopleList(){
 	$.ajax({
-			url: "http://localhost:8000/refreshpeople/",
+			url: "/refreshpeople/",
 			type: "get",
 			data: {
 				'csrfmiddlewaretoken': '{{ csrf_token }}',

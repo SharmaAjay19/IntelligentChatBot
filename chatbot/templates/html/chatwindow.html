@@ -3,7 +3,7 @@
 <script type="text/javascript" src="{% static 'js/chatwindowhelper.js' %}"></script>
 <div id="chatWindowContainer" name="chatWindowContainer" class="chatwindow">
 	<div id="conversationcontainer" name="conversationcontainer">
-		<input type="text" class="hidden" name="conversationid" id="conversationid" value=""/>
+		<input type="text" name="conversationid" id="conversationid" value=""/>
 		<ul class="conversation" id="conversationlist">
 		</ul>
 	</div>
@@ -12,7 +12,7 @@
 			function onKeyPress(e) {
 				if( (window.event ? event.keyCode : e.which) == 13) {
 					$.ajax({
-						url: "http://localhost:8000/sendmessage/",
+						url: "/sendmessage/",
 						type: "post",
 						data: {
 							'userid':$('#userid').val(),

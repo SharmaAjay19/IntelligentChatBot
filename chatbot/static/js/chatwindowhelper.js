@@ -15,7 +15,7 @@ setInterval(function(){
 
 function refreshChat(){
 	$.ajax({
-			url: "http://localhost:8000/refreshchat/",
+			url: "/refreshchat/",
 			type: "get",
 			data: {
 				'csrfmiddlewaretoken': '{{ csrf_token }}',
@@ -31,7 +31,7 @@ function refreshChat(){
 
 function clearChat(){
 	$.ajax({
-			url: "http://localhost:8000/clearchat/",
+			url: "/clearchat/",
 			type: "get",
 			data: {
 				'csrfmiddlewaretoken': '{{ csrf_token }}',
