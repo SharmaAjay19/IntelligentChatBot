@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<script type="text/javascript" src="{% static 'js/peoplehelper.js' %}"></script>
+<div id="peoplenavigationcontainer" name="peoplenavigationcontainer" class="peoplenavigation">
+	<h5>Available Users</h5>
+	<ul class="peoplenavigationlist" id="peoplenavigationlist" name="peoplenavigationlist">
+	{% for peopleitem in peoplelist %}
+	<li><button name="{{peopleitem.userid}}" id="{{peopleitem.userid}}" onclick="startConversation('{{peopleitem.userid}}')">{{peopleitem.userid}}</button></li>
+	{% endfor %}
+	</ul>
+</div>

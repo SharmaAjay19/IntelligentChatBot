@@ -9,9 +9,29 @@ function renderMessages(messageData){
 	}
 }
 
+setInterval(function(){
+   	refreshChat();
+}, 3000);
+
+function refreshChat(){
+	$.ajax({
+			url: "/refreshchat/",
+			type: "get",
+			data: {
+				'csrfmiddlewaretoken': '{{ csrf_token }}',
+				'conversationid': $('#conversationid').val(),
+			},
+			dataType: 'json',
+			success: function(output) {
+				console.log(output);
+				renderMessages(output);
+			}
+	});
+}
+
 function clearChat(){
 	$.ajax({
-			url: "http://localhost:8000/clearchat/",
+			url: "/clearchat/",
 			type: "get",
 			data: {
 				'csrfmiddlewaretoken': '{{ csrf_token }}',

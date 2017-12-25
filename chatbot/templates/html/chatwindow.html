@@ -1,13 +1,10 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-<script type="text/javascript" src="{% static 'js/renderhelper.js' %}"></script>
-<input type="text" name="userid" id="userid" value="UserId"/>
+<script type="text/javascript" src="{% static 'js/chatwindowhelper.js' %}"></script>
 <div id="chatWindowContainer" name="chatWindowContainer" class="chatwindow">
 	<div id="conversationcontainer" name="conversationcontainer">
+		<input type="text" name="conversationid" id="conversationid" value=""/>
 		<ul class="conversation" id="conversationlist">
-			{% for item in chatmessages %}
-			<li>{{ item.userid }}: {{ item.text }}</li>
-			{% endfor %}
 		</ul>
 	</div>
 	<div id="chattypebox" name="chattypebox" class="chattypebox">
@@ -15,12 +12,13 @@
 			function onKeyPress(e) {
 				if( (window.event ? event.keyCode : e.which) == 13) {
 					$.ajax({
-						url: "http://localhost:8000/sendmessage/",
+						url: "/sendmessage/",
 						type: "post",
 						data: {
 							'userid':$('#userid').val(),
 							'text': $('#chatinput').val(),
 							'csrfmiddlewaretoken': '{{ csrf_token }}',
+							'conversationid': $('#conversationid').val(),
 						},
 						dataType: 'json',
 						success: function(output) {
@@ -36,5 +34,8 @@
 	</div>
 	<div id="clearbuttondiv" class="clearbuttondiv">
 		<button id="clearbutton" name="clearbutton" onclick="clearChat()">Clear</button>
+	</div>
+	<div id="refreshbuttondiv" class="refreshbuttondiv">
+		<button id="refreshbutton" name="refreshbutton" onclick="refreshChat()">Refresh</button>
 	</div>
 </div>
