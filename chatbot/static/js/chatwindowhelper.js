@@ -19,6 +19,7 @@ function refreshChat(){
 			type: "get",
 			data: {
 				'csrfmiddlewaretoken': '{{ csrf_token }}',
+				'conversationid': $('#conversationid').val(),
 			},
 			dataType: 'json',
 			success: function(output) {

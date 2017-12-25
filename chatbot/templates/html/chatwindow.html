@@ -1,12 +1,10 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-<script type="text/javascript" src="{% static 'js/renderhelper.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/chatwindowhelper.js' %}"></script>
 <div id="chatWindowContainer" name="chatWindowContainer" class="chatwindow">
 	<div id="conversationcontainer" name="conversationcontainer">
+		<input type="text" class="hidden" name="conversationid" id="conversationid" value=""/>
 		<ul class="conversation" id="conversationlist">
-			{% for item in conversation.chatmessages %}
-			<li>{{ item.userid }}: {{ item.text }}</li>
-			{% endfor %}
 		</ul>
 	</div>
 	<div id="chattypebox" name="chattypebox" class="chattypebox">
@@ -20,6 +18,7 @@
 							'userid':$('#userid').val(),
 							'text': $('#chatinput').val(),
 							'csrfmiddlewaretoken': '{{ csrf_token }}',
+							'conversationid': $('#conversationid').val(),
 						},
 						dataType: 'json',
 						success: function(output) {

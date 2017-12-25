@@ -16,3 +16,11 @@ textarea.chatinput {
 ul.conversation {
 	list-style-type: none;
 }
+
+ul.chatnavigationlist {
+	list-style-type: none;
+}
+
+input.hidden {
+	display: none;
+}

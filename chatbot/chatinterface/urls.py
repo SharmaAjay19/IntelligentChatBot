@@ -21,7 +21,8 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^chat/', views.ChatPageView.as_view()),
-    url(r'^clearchat/', views.ClearChatPageView.as_view()),
+    url(r'^startconversation/', views.StartConversationPageView.as_view()),
     url(r'^sendmessage/', views.SendMessage.as_view()),
     url(r'^refreshchat/', views.RefreshChatPageView.as_view()),
+    url(r'^refreshpeople/', views.RefreshPeopleListView.as_view()),
 ]
