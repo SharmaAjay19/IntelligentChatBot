@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from chatinterface import views
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^chat/', views.ChatPageView.as_view()),
     url(r'^clearchat/', views.ClearChatPageView.as_view()),
     url(r'^sendmessage/', views.SendMessage.as_view()),

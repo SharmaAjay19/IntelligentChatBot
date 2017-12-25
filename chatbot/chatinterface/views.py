@@ -28,7 +28,8 @@ conversation.chatmessages.append(ChatMessage(1, "ajay", "How are you?").__dict__
  
 class ChatPageView(TemplateView):
 	def get(self, request, **kwargs):
-		return render(request, 'index.html', getMessages(10))
+		userid = request.user
+		return render(request, 'index.html', {"userid": userid, "conversation": getMessages(10)})
 
 class ClearChatPageView(TemplateView):
 	def get(self, request, **kwargs):

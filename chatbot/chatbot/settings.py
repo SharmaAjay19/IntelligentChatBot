@@ -56,6 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            BASE_DIR + '/templates/',
             BASE_DIR + '/templates/html/',
         ],
         'APP_DIRS': True,
@@ -124,3 +125,5 @@ CSRF_COOKIE_SECURE = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/chat/'

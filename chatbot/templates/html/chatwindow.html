@@ -1,11 +1,10 @@
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 <script type="text/javascript" src="{% static 'js/renderhelper.js' %}"></script>
-<input type="text" name="userid" id="userid" value="UserId"/>
 <div id="chatWindowContainer" name="chatWindowContainer" class="chatwindow">
 	<div id="conversationcontainer" name="conversationcontainer">
 		<ul class="conversation" id="conversationlist">
-			{% for item in chatmessages %}
+			{% for item in conversation.chatmessages %}
 			<li>{{ item.userid }}: {{ item.text }}</li>
 			{% endfor %}
 		</ul>
